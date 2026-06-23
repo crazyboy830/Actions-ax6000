@@ -54,7 +54,7 @@ jobs:
 
     - name: Restore upstream hash cache
       id: upstream_cache
-      uses: actions/cache@v4
+      uses: actions/cache@v5
       with:
         path: .upstream_hash
         key: upstream-${{ env.REPO_BRANCH }}-${{ steps.get_hash.outputs.commit_hash }}
@@ -83,7 +83,7 @@ jobs:
         echo "Upstream hash: ${{ needs.check-upstream.outputs.upstream_hash }}"
 
     - name: Checkout
-      uses: actions/checkout@v4
+      uses: actions/checkout@v5
 
     - name: Initialization environment
       env:
@@ -112,7 +112,7 @@ jobs:
         mkdir -p openwrt/.ccache
 
     - name: Restore dl cache
-      uses: actions/cache@v4
+      uses: actions/cache@v5
       with:
         path: openwrt/dl
         key: ${{ runner.os }}-${{ env.REPO_BRANCH }}-dl-${{ env.CACHE_VERSION }}
@@ -123,7 +123,7 @@ jobs:
       run: rm -rf openwrt/dl/go-mod-cache
 
     - name: Restore ccache
-      uses: actions/cache@v4
+      uses: actions/cache@v5
       with:
         path: openwrt/.ccache
         key: ${{ runner.os }}-${{ env.REPO_BRANCH }}-ccache-${{ env.CACHE_VERSION }}-${{ hashFiles('.config', 'diy.sh') }}
@@ -268,7 +268,7 @@ jobs:
         echo "status=success" >> $GITHUB_OUTPUT
 
     - name: Upload firmware to release
-      uses: softprops/action-gh-release@v2
+      uses: softprops/action-gh-release@v3
       if: steps.tag.outputs.status == 'success' && !cancelled()
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
