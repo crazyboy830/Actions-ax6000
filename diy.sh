@@ -18,15 +18,15 @@ case "$STAGE" in
 
   feeds)
     # Pin external sources for reproducible builds. You may override these via env.
-    PASSWALL_LUCI_REF="${PASSWALL_LUCI_REF:-69346de7d43fa64ad124bf35b4f9b374bb9d44ef}"
+    PASSWALL2_LUCI_REF="${PASSWALL2_LUCI_REF:-9f080c65786f3838c19e21186fdc3a5f408e38ce}"
     PASSWALL_PACKAGES_REF="${PASSWALL_PACKAGES_REF:-291522a4918deb65c464584cfd912c62ac874085}"
-    GOLANG_FEED_REF="${GOLANG_FEED_REF:-5c14cc148c88b42ea36e8c42733c80acd2ee1949}"
+    GOLANG_FEED_REF="${GOLANG_FEED_REF:-9384daa461a616183457be2baf8eebcf914044fb}"
     V2RAY_GEODATA_REF="${V2RAY_GEODATA_REF:-2e3845caae172326f02b3406048c7a3613f3dee5}"
 
     # Pin PassWall feed repos declared in feeds.conf.default.
-    if [ -d feeds/passwall_luci/.git ]; then
-      git -C feeds/passwall_luci fetch --depth=1 origin "$PASSWALL_LUCI_REF"
-      git -C feeds/passwall_luci checkout --detach "$PASSWALL_LUCI_REF"
+    if [ -d feeds/passwall2/.git ]; then
+      git -C feeds/passwall2 fetch --depth=1 origin "$PASSWALL2_LUCI_REF"
+      git -C feeds/passwall2 checkout --detach "$PASSWALL2_LUCI_REF"
     fi
     if [ -d feeds/passwall_packages/.git ]; then
       git -C feeds/passwall_packages fetch --depth=1 origin "$PASSWALL_PACKAGES_REF"

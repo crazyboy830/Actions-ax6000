@@ -6,7 +6,7 @@
 
 - 编译入口：单 `diy.sh`（`pre|feeds|post` 三阶段）
 - CI 工作流：单 `.github/workflows/openwrt-builder.yml`
-- PassWall：使用官方 feed（`passwall_luci + passwall_packages`），并采用 `Xray` 配置
+- PassWall2：使用官方 feed（`passwall2 + passwall_packages`），并采用 `Xray` 内核
 - 默认管理地址：`192.168.31.1`
 - 网络优化：保留 `BBR`（`kmod-sched-core + kmod-tcp-bbr`）
 
